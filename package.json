@@ -1,6 +1,6 @@
 {
   "name": "pixiv-api",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Node wrapper for the Pixiv API",
   "main": "pixiv.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/AlexKolpa/PixivAPI.git"
+    "url": "https://github.com/AlexKolpa/pixiv-api.git"
   },
   "keywords": [
     "pixiv",
@@ -17,9 +17,9 @@
   "author": "Alex Kolpa <akolpa1990@gmail.com>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/AlexKolpa/PixivAPI/issues"
+    "url": "https://github.com/AlexKolpa/pixiv-api/issues"
   },
-  "homepage": "https://github.com/AlexKolpa/PixivAPI",
+  "homepage": "https://github.com/AlexKolpa/pixiv-api",
   "dependencies": {
     "request": "*",
     "q": "*"
