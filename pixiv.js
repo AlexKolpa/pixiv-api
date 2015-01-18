@@ -1,5 +1,6 @@
 var q = require('q');
 var request = q.denodeify(require('request'));
+var parse = q.denodeify(require('csv-parse'));
 
 var getIllustrationFromArray = function (arr) {	
 	arr.forEach(function (item, index, arr) {
@@ -70,8 +71,9 @@ var self = module.exports = {
 				if (response[0].statusCode != 200) {
 					throw self.errrors.unableToRetrieveIllust;
 				}
-				var parts = response[0].body.split(',');
-				var img = getIllustrationFromArray(parts);
+				return parse(response[0].body);
+			}).then(function(parts) {
+				var img = getIllustrationFromArray(parts[0]);
 				if (img.tags.length > 0 && img.tags.indexOf('うごイラ') != -1) {
 					throw self.errors.unableToRetrieveUgoira;
 				}
@@ -87,12 +89,11 @@ var self = module.exports = {
 				if (response[0].statusCode != 200) {
 					throw self.errors.unableToRetrieveManga;
 				}
+				return parse(response[0].body);				
+			}).then(function(parts) {
 				var images = [];
-				var arr = response[0].body.split(',');
-				
-				for(var i = 0; i < arr.length - 30; i+=30) {
-					var part = arr.slice(i, i + 30);
-					var img = getIllustrationFromArray(part);
+				for(var i = 0; i < parts.length; i++) {
+					var img = getIllustrationFromArray(parts[i]);
 					if (img.tags.length > 0 && img.tags.indexOf('うごイラ') != -1) {
 						throw self.errors.unableToRetrieveUgoira;
 					}

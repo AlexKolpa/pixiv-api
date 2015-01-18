@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/AlexKolpa/pixiv-api",
   "dependencies": {
-    "request": "*",
-    "q": "*"
+    "csv-parse": "0.0.6",
+    "q": "*",
+    "request": "*"
   }
 }
