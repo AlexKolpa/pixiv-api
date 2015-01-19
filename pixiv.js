@@ -47,8 +47,8 @@ var self = module.exports = {
 		var countUrl = 'http://spapi.pixiv.net/iphone/manga.php?illust_id=' + id + '&c_mode=count';
 		return request(countUrl)
 			.then(function (response) { 
-			var count = parseInt(response[0].body);
-			if (response[0].statusCode != 200 || isNaN(count)) {
+			var count = parseInt(response.body);
+			if (response.statusCode != 200 || isNaN(count)) {
 				throw self.errors.missingImageCount;
 			}
 			
@@ -68,10 +68,10 @@ var self = module.exports = {
 		var apiCall = 'http://spapi.pixiv.net/iphone/illust.php?illust_id=' + id;
 		return request(apiCall)
 			.then(function (response) {
-				if (response[0].statusCode != 200) {
+				if (response.statusCode != 200) {
 					throw self.errrors.unableToRetrieveIllust;
 				}
-				return parse(response[0].body);
+				return parse(response.body);
 			}).then(function(parts) {
 				var img = getIllustrationFromArray(parts[0]);
 				if (img.tags.length > 0 && img.tags.indexOf('うごイラ') != -1) {
@@ -86,10 +86,10 @@ var self = module.exports = {
 		var apiCall = 'http://spapi.pixiv.net/iphone/manga.php?illust_id=' + id;
 		return request(apiCall)
 			.then(function (response) {
-				if (response[0].statusCode != 200) {
+				if (response.statusCode != 200) {
 					throw self.errors.unableToRetrieveManga;
 				}
-				return parse(response[0].body);				
+				return parse(response.body);				
 			}).then(function(parts) {
 				var images = [];
 				for(var i = 0; i < parts.length; i++) {
