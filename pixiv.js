@@ -112,20 +112,20 @@ var self = module.exports = {
 		var re = /^(.+)mobile\/(.+)_480mw(_p\d+)?\./i;
 		var match = re.exec(mobileUrl);
 		if (match) {
-			return match[1] + match[2] + (match[3] || "") + '.' + illust.extension;
+			return match[1] + match[2] + (match[3] || "") + '.jpg';
 		}
 
 		// Single image style 2
 		re = /^(.+)\/c\/(.+)\/img-master(.+)_480mw\./i;
 		match = re.exec(mobileUrl);
 		if (match) {
-			return match[1] + '/img-original' + match[3] + '_p0.' + illust.extension;
+			return match[1] + '/img-original' + match[3] + '_p0.jpg';
 		}
 		
 		re = /^(.+)\/c\/(.+)\/img-master(.+)_480mw(_p\d+)/i;
 		match = re.exec(mobileUrl);
 		if (match) {
-			return match[1] + '/c/1200x1200/img-master' + match[3] + match[4] + '_master1200.' + illust.extension;
+			return match[1] + '/c/1200x1200/img-master' + match[3] + match[4] + '_master1200.jpg';
 		}
 	},
 	
