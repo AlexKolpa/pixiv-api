@@ -1,6 +1,6 @@
 {
   "name": "pixiv-api",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A Node wrapper for the Pixiv API",
   "main": "pixiv.js",
   "scripts": {
